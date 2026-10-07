@@ -1,0 +1,387 @@
+/*
+ * MBR Critical CSS Generator
+ * Scoped to .mbr-ccss and built to sit inside any theme: it inherits the theme's
+ * font and text colour. Override the custom properties below to match your brand.
+ */
+.mbr-ccss {
+	--mbr-ccss-accent: #1f5f8b;
+	--mbr-ccss-accent-ink: #ffffff;
+	--mbr-ccss-line: color-mix(in srgb, currentColor 22%, transparent);
+	--mbr-ccss-soft: color-mix(in srgb, currentColor 5%, transparent);
+	--mbr-ccss-muted: color-mix(in srgb, currentColor 68%, transparent);
+	--mbr-ccss-ok: #2d7a46;
+	--mbr-ccss-bad: #b3261e;
+	--mbr-ccss-radius: 6px;
+	--mbr-ccss-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+	max-width: 60rem;
+	margin: 0 auto 2rem;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.mbr-ccss *,
+.mbr-ccss *::before,
+.mbr-ccss *::after {
+	box-sizing: border-box;
+}
+
+/* Form ------------------------------------------------------------------ */
+
+.mbr-ccss__form {
+	display: grid;
+	gap: 1.25rem;
+}
+
+.mbr-ccss__field {
+	display: grid;
+	gap: 0.35rem;
+	min-width: 0;
+}
+
+.mbr-ccss label,
+.mbr-ccss legend {
+	font-weight: 600;
+	font-size: 0.9375rem;
+}
+
+.mbr-ccss input[type="url"],
+.mbr-ccss input[type="number"] {
+	width: 100%;
+	margin: 0;
+	padding: 0.65rem 0.8rem;
+	border: 1px solid var(--mbr-ccss-line);
+	border-radius: var(--mbr-ccss-radius);
+	background: transparent;
+	color: inherit;
+	font: inherit;
+}
+
+.mbr-ccss input[type="url"] {
+	font-size: 1.0625rem;
+}
+
+.mbr-ccss input[type="number"] {
+	font-variant-numeric: tabular-nums;
+}
+
+.mbr-ccss input:focus-visible,
+.mbr-ccss button:focus-visible,
+.mbr-ccss textarea:focus-visible,
+.mbr-ccss summary:focus-visible {
+	outline: 2px solid var(--mbr-ccss-accent);
+	outline-offset: 2px;
+}
+
+.mbr-ccss__viewport {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+
+.mbr-ccss__viewport legend {
+	padding: 0;
+	margin-bottom: 0.5rem;
+}
+
+.mbr-ccss__dims {
+	display: grid;
+	grid-template-columns: minmax(0, 10rem) auto minmax(0, 10rem);
+	justify-content: start;
+	align-items: end;
+	gap: 0.75rem;
+}
+
+.mbr-ccss__dims label {
+	font-weight: 400;
+	color: var(--mbr-ccss-muted);
+}
+
+.mbr-ccss__times {
+	padding-bottom: 0.6rem;
+	color: var(--mbr-ccss-muted);
+}
+
+.mbr-ccss__presets {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 0.75rem;
+}
+
+.mbr-ccss button {
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+.mbr-ccss__preset,
+.mbr-ccss__actions button {
+	padding: 0.4rem 0.75rem;
+	border: 1px solid var(--mbr-ccss-line);
+	border-radius: 999px;
+	background: transparent;
+	color: inherit;
+	font-size: 0.875rem;
+	line-height: 1.3;
+}
+
+.mbr-ccss__preset span {
+	color: var(--mbr-ccss-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.mbr-ccss__preset:hover,
+.mbr-ccss__actions button:hover {
+	border-color: currentColor;
+}
+
+.mbr-ccss__preset[aria-pressed="true"] {
+	border-color: var(--mbr-ccss-accent);
+	background: var(--mbr-ccss-accent);
+	color: var(--mbr-ccss-accent-ink);
+}
+
+.mbr-ccss__preset[aria-pressed="true"] span {
+	color: inherit;
+	opacity: 0.8;
+}
+
+.mbr-ccss__options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.5rem;
+}
+
+.mbr-ccss__options label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-weight: 400;
+}
+
+.mbr-ccss__options input {
+	accent-color: var(--mbr-ccss-accent);
+	width: 1.05em;
+	height: 1.05em;
+	margin: 0;
+}
+
+.mbr-ccss__submit {
+	justify-self: start;
+	padding: 0.75rem 1.5rem;
+	border: 0;
+	border-radius: var(--mbr-ccss-radius);
+	background: var(--mbr-ccss-accent);
+	color: var(--mbr-ccss-accent-ink);
+	font-weight: 600;
+}
+
+.mbr-ccss__submit:hover {
+	filter: brightness(1.1);
+}
+
+.mbr-ccss__submit:disabled {
+	opacity: 0.6;
+	cursor: progress;
+}
+
+/* Status ---------------------------------------------------------------- */
+
+.mbr-ccss__status {
+	margin: 1.25rem 0 0;
+	min-height: 1.5em;
+}
+
+.mbr-ccss__status:empty {
+	display: none;
+}
+
+.mbr-ccss__status.is-busy {
+	color: var(--mbr-ccss-muted);
+}
+
+.mbr-ccss__status.is-busy::before {
+	content: "";
+	display: inline-block;
+	width: 0.85em;
+	height: 0.85em;
+	margin-right: 0.5em;
+	vertical-align: -0.1em;
+	border: 2px solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	animation: mbr-ccss-spin 0.8s linear infinite;
+}
+
+.mbr-ccss__status.is-success {
+	color: var(--mbr-ccss-ok);
+}
+
+.mbr-ccss__status.is-warning {
+	color: #9a5b00;
+}
+
+.mbr-ccss__status.is-error {
+	color: var(--mbr-ccss-bad);
+}
+
+@keyframes mbr-ccss-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mbr-ccss__status.is-busy::before {
+		animation-duration: 2.5s;
+	}
+}
+
+/* Result ---------------------------------------------------------------- */
+
+.mbr-ccss__result {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1.5rem;
+	margin-top: 1.25rem;
+}
+
+.mbr-ccss__result > * {
+	min-width: 0;
+}
+
+.mbr-ccss__result[hidden],
+.mbr-ccss__notes[hidden] {
+	display: none;
+}
+
+.mbr-ccss__output-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.mbr-ccss__actions {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.mbr-ccss textarea {
+	display: block;
+	width: 100%;
+	min-height: 14rem;
+	margin: 0;
+	padding: 0.85rem 1rem;
+	border: 1px solid var(--mbr-ccss-line);
+	border-radius: var(--mbr-ccss-radius);
+	background: var(--mbr-ccss-soft);
+	color: inherit;
+	font-family: var(--mbr-ccss-mono);
+	font-size: 0.8125rem;
+	line-height: 1.55;
+	white-space: pre-wrap;
+	word-break: break-all;
+	resize: vertical;
+	tab-size: 2;
+}
+
+.mbr-ccss__stats {
+	margin: 0.5rem 0 0;
+	font-size: 0.875rem;
+	color: var(--mbr-ccss-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.mbr-ccss__notes {
+	font-size: 0.875rem;
+	border-left: 3px solid var(--mbr-ccss-line);
+	padding-left: 0.85rem;
+}
+
+.mbr-ccss__notes summary {
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.mbr-ccss__notes ul {
+	margin: 0.5rem 0 0;
+	padding-left: 1.1rem;
+	overflow-wrap: anywhere;
+}
+
+/* Preview: the browser-window frame is the one visual flourish -------------- */
+
+.mbr-ccss__preview {
+	margin: 0;
+}
+
+.mbr-ccss__preview figcaption {
+	/* Doubles as the browser-window title bar. */
+	position: relative;
+	padding: 0.4rem 0.85rem 0.4rem 3.4rem;
+	border: 1px solid var(--mbr-ccss-line);
+	border-bottom: 0;
+	border-radius: var(--mbr-ccss-radius) var(--mbr-ccss-radius) 0 0;
+	background: var(--mbr-ccss-soft);
+	font-size: 0.8125rem;
+	color: var(--mbr-ccss-muted);
+}
+
+.mbr-ccss__preview figcaption::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0.85rem;
+	width: 0.55rem;
+	height: 0.55rem;
+	margin-top: -0.275rem;
+	border-radius: 50%;
+	background: var(--mbr-ccss-line);
+	box-shadow: 0.8rem 0 0 var(--mbr-ccss-line), 1.6rem 0 0 var(--mbr-ccss-line);
+}
+
+.mbr-ccss__stage {
+	position: relative;
+	width: 100%;
+	min-height: 4rem;
+	overflow: hidden;
+	border: 1px solid var(--mbr-ccss-line);
+	border-radius: 0 0 var(--mbr-ccss-radius) var(--mbr-ccss-radius);
+	background: #fff;
+}
+
+.mbr-ccss .mbr-ccss__frame {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	max-width: none !important;
+	max-height: none !important;
+	display: block;
+	border: 0;
+	transform-origin: 0 0;
+	pointer-events: none;
+	background: #fff;
+}
+
+.mbr-ccss-notice {
+	padding: 0.75rem 1rem;
+	border-left: 3px solid currentColor;
+}
+
+/* Small screens --------------------------------------------------------- */
+
+@media (max-width: 480px) {
+	.mbr-ccss__dims {
+		grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+		justify-content: stretch;
+	}
+
+	.mbr-ccss__submit {
+		justify-self: stretch;
+	}
+}
